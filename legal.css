@@ -1,0 +1,109 @@
+/* Legal/trust pages — readable documents, not marketing. */
+
+.legal-page {
+    color: #e2e8f0;
+}
+
+.legal-page a:focus-visible {
+    outline: 3px solid #38bdf8;
+    outline-offset: 3px;
+}
+
+.legal-skip {
+    position: absolute;
+    left: 12px;
+    top: -48px;
+    z-index: 50;
+    background: #0ea5e9;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 6px;
+}
+
+.legal-skip:focus {
+    top: 12px;
+}
+
+.legal-page header .logo {
+    text-decoration: none;
+}
+
+.legal-page header .logo:hover {
+    color: #7dd3fc;
+}
+
+.legal-page footer .site-legal-nav a[aria-current="page"] {
+    color: #38bdf8;
+}
+
+.legal-main {
+    padding: 40px 0 72px;
+}
+
+.legal-doc {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.legal-kicker {
+    color: #94a3b8;
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.legal-doc h1 {
+    font-size: 2.125rem;
+    line-height: 1.25;
+    margin-bottom: 8px;
+    color: #f8fafc;
+}
+
+.legal-effective {
+    color: #94a3b8;
+    margin: 0 0 36px;
+    font-size: 1rem;
+}
+
+.legal-doc h2 {
+    font-size: 1.25rem;
+    line-height: 1.35;
+    color: #f8fafc;
+    margin: 2rem 0 0.75rem;
+}
+
+.legal-doc p {
+    color: #cbd5e1;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+}
+
+.legal-doc ul,
+.legal-doc ol {
+    color: #cbd5e1;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    margin: 0 0 1rem 1.25rem;
+}
+
+.legal-doc li {
+    margin-bottom: 0.4rem;
+}
+
+.legal-doc a {
+    color: #38bdf8;
+}
+
+.legal-doc a:hover {
+    color: #7dd3fc;
+}
+
+@media (max-width: 650px) {
+    .legal-doc h1 {
+        font-size: 1.75rem;
+    }
+
+    .legal-main {
+        padding: 28px 0 56px;
+    }
+}
