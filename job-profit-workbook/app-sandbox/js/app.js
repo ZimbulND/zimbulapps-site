@@ -583,7 +583,7 @@ function viewTrialConnect() {
             <input data-field="trialReg.consent" data-as="boolean" type="checkbox"${t.consent ? " checked" : ""} />
             ${
               isWebRuntime()
-                ? "I understand this is a 7-day free trial."
+                ? "<span>I understand this is a 7-day free trial.</span>"
                 : "I understand this is a 7-day trial, there is no automatic charge, and my job and customer data stay on this computer."
             }
           </label>
