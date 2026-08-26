@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Job Profit Workbook (sandbox)</title>
+    <link rel="stylesheet" href="./css/app.css" />
+    <link rel="icon" href="./favicon.svg" />
+    <script type="importmap">
+      { "imports": { "/engine/": "./engine/" } }
+    </script>
+  </head>
+  <body class="web-runtime">
+    <div id="app">
+      <p class="loading-screen">Loading workbook…</p>
+    </div>
+    <input id="workbook-restore-file" type="file" accept=".zip,application/zip" hidden />
+    <input id="license-file" type="file" accept=".lic,.json,application/json" hidden />
+    <script>
+      window.JPW_WEB_RUNTIME = true;
+      window.JPW_WEB_STORAGE_NS = "sandbox";
+      window.JPW_LICENSE_ORIGIN = "https://jobprofit-license-sandbox.nine-samba.workers.dev";
+    </script>
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>

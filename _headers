@@ -1,3 +1,6 @@
 /job-profit-workbook/JobProfitWorkbookSetup.exe
   Content-Type: application/octet-stream
   Content-Disposition: attachment; filename="JobProfitWorkbookSetup.exe"
+
+/job-profit-workbook/app-sandbox/*
+  X-Robots-Tag: noindex, nofollow
