@@ -556,7 +556,7 @@ function licenseBanner() {
   const backup = model.backup && !isWebRuntime()
     ? `<button class="btn secondary" data-action="backup-workbook">Backup workbook</button>`
     : "";
-  const install = model.expired
+  const install = model.expired && !isWebRuntime()
     ? `<button class="btn secondary" data-action="install-license">Install license file</button>`
     : "";
   const help = isWebRuntime()
@@ -573,7 +573,41 @@ function licenseBanner() {
 
 function viewTrialConnect() {
   const t = state.trialReg;
-  const stored = isWebRuntime() ? "this browser" : "this computer";
+  const fields = `
+        <div class="form-grid">
+          ${textField("trialReg.name", "Name", t.name, { wide: true })}
+          ${textField("trialReg.email", "Email", t.email, { type: "email" })}
+          ${textField("trialReg.businessName", "Business name (optional)", t.businessName)}
+          ${textField("trialReg.mobile", "Mobile phone (optional)", t.mobile, { type: "tel" })}
+          <label class="wide consent">
+            <input data-field="trialReg.consent" data-as="boolean" type="checkbox"${t.consent ? " checked" : ""} />
+            ${
+              isWebRuntime()
+                ? "I understand this is a 7-day free trial."
+                : "I understand this is a 7-day trial, there is no automatic charge, and my job and customer data stay on this computer."
+            }
+          </label>
+        </div>`;
+  const webBody = `
+        <h1>Start Your 7-Day Free Trial</h1>
+        <p class="lede">No credit card required. Start using Job Profit Workbook now.</p>
+        ${fields}
+        <div class="actions">
+          <button class="btn gold" data-action="connect-trial">Start My 7-Day Free Trial</button>
+        </div>`;
+  const desktopBody = `
+        <h1>Start your 7-day free trial</h1>
+        <p class="lede">No credit card. No automatic charge. Your job and customer data stay on this computer.</p>
+        <p>After 7 days, Job Profit Workbook is $199 one time.</p>
+        ${fields}
+        <div class="actions">
+          <button class="btn gold" data-action="connect-trial">Connect once and start trial</button>
+        </div>
+        <p class="help">This computer only needs to connect once. After that you can use the workbook without the internet.</p>
+        <div class="trial-connect-license">
+          <button class="btn secondary" data-action="install-license">Install license file</button>
+          <p class="help">If you already received a license file for this computer, install it here instead of starting a trial.</p>
+        </div>`;
   return `
     <header class="app-header">
       <a class="brand" href="#/">
@@ -584,27 +618,7 @@ function viewTrialConnect() {
     <main class="main">
       ${messages()}
       <section class="card trial-connect">
-        <h1>Start your 7-day free trial</h1>
-        <p class="lede">No credit card. No automatic charge. Your job and customer data stay on ${stored}.</p>
-        <p>After 7 days, Job Profit Workbook is $199 one time.</p>
-        <div class="form-grid">
-          ${textField("trialReg.name", "Name", t.name, { wide: true })}
-          ${textField("trialReg.email", "Email", t.email, { type: "email" })}
-          ${textField("trialReg.businessName", "Business name (optional)", t.businessName)}
-          ${textField("trialReg.mobile", "Mobile phone (optional)", t.mobile, { type: "tel" })}
-          <label class="wide consent">
-            <input data-field="trialReg.consent" data-as="boolean" type="checkbox"${t.consent ? " checked" : ""} />
-            I understand this is a 7-day trial, there is no automatic charge, and my job and customer data stay on this computer.
-          </label>
-        </div>
-        <div class="actions">
-          <button class="btn gold" data-action="connect-trial">Connect once and start trial</button>
-        </div>
-        <p class="help">This computer only needs to connect once. After that you can use the workbook without the internet.</p>
-        <div class="trial-connect-license">
-          <button class="btn secondary" data-action="install-license">Install license file</button>
-          <p class="help">If you already received a license file for this computer, install it here instead of starting a trial.</p>
-        </div>
+        ${isWebRuntime() ? webBody : desktopBody}
       </section>
     </main>
   `;
@@ -621,7 +635,9 @@ async function connectTrial() {
   if (!result.ok) throw new Error(result.error || "Could not start the trial.");
   state.entitlement = result.status || (await api.entitlement());
   state.errors = [];
-  state.flash = "Your 7-day trial is active. Your jobs stay on this computer.";
+  state.flash = isWebRuntime()
+    ? "Your 7-day trial is active."
+    : "Your 7-day trial is active. Your jobs stay on this computer.";
   await refreshLists();
   await route();
 }
