@@ -1,6 +1,7 @@
 /* Job Profit Workbook product page — extends site brand, not the homepage layout. */
 
 .jpw-page {
+    background: #0f172a;
     color: #e2e8f0;
 }
 
