@@ -7,6 +7,7 @@
     <meta name="description" content="Zimbul Apps LLC builds focused software for real-world operators. Explore Zimbul Consign, Job Profit Workbook, and Relief.">
     <link rel="canonical" href="https://zimbulapps.com/">
     <link rel="stylesheet" href="styles.css">
+    <script src="/contact.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -117,11 +118,14 @@
                 <p>For product questions, company inquiries, or investor conversations, send a note and we’ll get back to you.</p>
                 <a class="email-link" href="mailto:contact@zimbulapps.com">contact@zimbulapps.com</a>
             </div>
-            <form name="contact" method="POST" data-netlify="true" class="contact-form">
+            <form name="contact" method="POST" action="/contact/received/" data-netlify="true" class="contact-form" aria-describedby="contact-guidance contact-status">
                 <input type="hidden" name="form-name" value="contact">
                 <div class="field-row"><label>Name<input type="text" name="name" autocomplete="name" required></label><label>Email<input type="email" name="email" autocomplete="email" required></label></div>
                 <label>Company (optional)<input type="text" name="company" autocomplete="organization"></label>
                 <label>Message<textarea name="message" rows="5" required></textarea></label>
+                <p id="contact-guidance" class="form-guidance">The live Netlify website processes this form. After submitting, look for the confirmation page. If you see an error or do not reach it, sending is not confirmed: return here and check your connection, or email <a href="mailto:contact@zimbulapps.com">contact@zimbulapps.com</a>. Please do not include payment-card details or private workbook files.</p>
+                <p id="contact-status" class="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
+                <noscript><p class="form-guidance">JavaScript is off. This form can submit on the live Netlify site only; the Replit development preview cannot send messages. You can use the email link instead.</p></noscript>
                 <button type="submit" class="btn">Send message <span aria-hidden="true">→</span></button>
             </form>
         </div>

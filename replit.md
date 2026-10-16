@@ -28,3 +28,29 @@ and preserves the download and sandbox headers defined in `_headers`.
 - Workbook browser data is tied to the browser and origin. Existing data on
   another website origin is not automatically available in this preview.
 - No new secrets are required to serve the static files.
+
+## Development-only commercial readiness changes
+
+See `docs/commercial-readiness.md` for the development review checklist,
+browser inspection findings and owner-account checks still needed before release.
+The standing commercial and release scope is recorded in
+`.agents/memory/commercial-scope.md`.
+
+The enhanced contact form still uses a native Netlify POST, now with a local
+confirmation-page action. Replit preview hosts disable sending; the development
+server rejects contact POSTs with a helpful 405 page, including without JavaScript.
+
+### Local checks (no packages or build step required)
+
+```sh
+node --test tests/readiness.test.mjs
+python3 scripts/check-site.py
+node --check scripts/serve.cjs
+node --check contact.js
+git diff --check
+# With the application running and Chromium available:
+node --experimental-websocket scripts/check-browser.cjs
+```
+
+Browser checks use a disposable profile under `/tmp`, block external and
+mutating page requests, and do not submit contact messages or start checkout.

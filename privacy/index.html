@@ -53,6 +53,11 @@
         <p>You can create a local backup of your workbook. Zimbul Apps does not keep a cloud copy of your jobs that we can restore if a computer is lost or a disk fails.</p>
         <p>If you contact us for help, you may choose to send screenshots, backups, or other information. We only see what you send.</p>
 
+        <h3>Unreleased browser implementation — development clarification</h3>
+        <p>The supported commercial product described above is the Windows edition. An existing browser implementation is not a released or verified limited free demonstration. It still uses trial and paid licensing. Do not rely on it for real business records.</p>
+        <p>In that browser implementation, jobs, business setup, license state, and a copy of trial registration information are stored in IndexedDB. A randomly generated device identifier is stored in browser local storage; it is not derived from a Windows hardware identifier. Records are tied to the browser profile and website origin, not automatically shared with the Windows edition or another device or origin. Clearing site data, private browsing, or loss of browser storage can make records and activation unavailable. The browser interface does not provide workbook backup or restore.</p>
+        <p>If you activate the existing browser implementation or request a purchase-status check, it sends registration and licensing information to the configured licensing service. Checkout uses Stripe. This is not a claim that browser signup or payment has been verified from the Replit development address. The browser code stores workbook contents locally; its licensing requests do not include your job or customer records. The trial checkbox is agreement to start a trial, not consent to marketing messages.</p>
+
         <h2>3. Information We Receive</h2>
         <p>We receive information when you:</p>
         <ul>
@@ -82,6 +87,7 @@
 
         <h2>6. Website Contact Form</h2>
         <p>The public Zimbul Apps website is hosted by Netlify. The contact form may collect name, company, email, phone, and message. Netlify processes the submission. We use that information to respond to you.</p>
+        <p>The Replit development preview is separate from that public Netlify website and does not process or deliver contact-form submissions. Its form is disabled when JavaScript identifies the preview; the development server also rejects contact POST requests. Using a mailto link opens your own email application and does not send a message automatically. A contact confirmation page alone does not verify inbox delivery.</p>
         <p>The public website source we maintain does not include analytics or tracking scripts. Hosting providers may still keep ordinary access logs.</p>
 
         <h2>7. Service Providers</h2>

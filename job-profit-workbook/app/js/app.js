@@ -7,7 +7,7 @@ import { buildCustomerQuote } from "/engine/quoteView.js";
 import { OTHER_UNIT, UNIT_SUGGESTIONS, applyCategoryChange, burdenRateForCategory, shouldRebuildJobForm, unitSelectValue, unitStoredFromSelect } from "./fieldEvents.js";
 import { confirmExampleRestore } from "./exampleJob.js";
 import { BACKUP_GUIDANCE, confirmWorkbookRestore } from "./workbookBackup.js";
-import { isWebRuntime } from "./webRuntime.js";
+import { isWebRuntime, unavailableWebEntitlement } from "./webRuntime.js";
 import {
   BROWSER_OPEN_HELP,
   CHECKOUT_IN_BROWSER,
@@ -28,7 +28,7 @@ const state = {
   snapshot: "",
   errors: [],
   flash: "",
-  entitlement: { enabled: false, status: "unrestricted", canMutate: true, canBackup: true, message: "" },
+  entitlement: isWebRuntime() ? unavailableWebEntitlement() : { enabled: false, status: "unrestricted", canMutate: true, canBackup: true, message: "" },
   trialReg: { name: "", email: "", businessName: "", mobile: "", consent: false },
   purchase: { phase: "idle", url: null, opened: false },
 };
@@ -79,7 +79,7 @@ async function refreshLists() {
   try {
     state.entitlement = await api.entitlement();
   } catch {
-    state.entitlement = { enabled: false, status: "unrestricted", canMutate: true, canBackup: true, message: "" };
+    state.entitlement = isWebRuntime() ? unavailableWebEntitlement() : { enabled: false, status: "unrestricted", canMutate: true, canBackup: true, message: "" };
   }
 }
 
@@ -122,6 +122,10 @@ function parseRoute() {
 }
 
 async function route() {
+  if (isWebRuntime() && state.entitlement.status === "unavailable") {
+    render(`<main class="main"><section class="card"><h1>Browser licensing unavailable</h1><p role="alert">${escapeHtml(state.entitlement.message)}</p><p><a href="${escapeAttr(location.pathname)}">Reload browser implementation</a> · <a href="mailto:contact@zimbulapps.com">Contact support</a></p></section></main>`);
+    return;
+  }
   if (state.entitlement?.enabled && state.entitlement.status === "needs-activation") {
     render(viewTrialConnect());
     return;

@@ -1,0 +1,175 @@
+/* Shared layout for the static purchase-return pages. */
+.purchase-status {
+    --status-accent: #d5f45a;
+    --status-surface: #fffdf8;
+}
+
+.purchase-status a:focus-visible,
+header a:focus-visible,
+footer a:focus-visible {
+    outline: 3px solid #42645d;
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
+.status-hero {
+    padding: clamp(68px, 10vw, 118px) 0 clamp(54px, 8vw, 88px);
+    background: var(--paper);
+}
+
+.status-eyebrow,
+.status-step {
+    color: #42645d;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .13em;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.status-eyebrow {
+    margin-bottom: 20px;
+}
+
+.status-hero h1 {
+    max-width: 850px;
+    font-family: var(--serif);
+    font-size: clamp(42px, 6.5vw, 72px);
+    font-weight: 500;
+    letter-spacing: -.045em;
+    line-height: 1.04;
+}
+
+.status-lede {
+    max-width: 740px;
+    margin-top: 24px;
+    color: var(--muted);
+    font-size: clamp(17px, 2vw, 20px);
+    line-height: 1.65;
+}
+
+.status-content {
+    padding: clamp(42px, 7vw, 76px) 0;
+    background: var(--mint);
+}
+
+.status-layout {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.status-panel,
+.status-note {
+    padding: clamp(24px, 4vw, 42px);
+    border: 1px solid #b8c9bf;
+}
+
+.status-panel {
+    background: var(--status-surface);
+}
+
+.status-note {
+    background: #e9edda;
+}
+
+.status-step {
+    margin-bottom: 15px;
+}
+
+.status-panel h2,
+.status-note h2,
+.status-trial h2 {
+    margin-bottom: 16px;
+    font-family: var(--serif);
+    font-size: clamp(25px, 3.3vw, 34px);
+    font-weight: 500;
+    letter-spacing: -.025em;
+    line-height: 1.16;
+}
+
+.status-panel p:not(.status-step),
+.status-note p:not(.status-step) {
+    margin-top: 14px;
+    color: #3f5753;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.status-panel strong,
+.status-note strong {
+    color: var(--ink);
+}
+
+.status-panel a,
+.status-note a {
+    font-weight: 800;
+    text-underline-offset: 3px;
+}
+
+.status-trial {
+    padding: 42px 0;
+    background: var(--ink);
+    color: var(--white);
+}
+
+.status-trial-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.status-trial h2 {
+    margin: 0;
+    font-size: 25px;
+}
+
+.status-trial p {
+    color: #c0cfcc;
+    font-size: 14px;
+}
+
+.status-trial a {
+    flex: 0 0 auto;
+    color: var(--status-accent);
+    font-size: 14px;
+    font-weight: 800;
+    text-underline-offset: 4px;
+}
+
+@media (max-width: 760px) {
+    .status-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .status-trial-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 650px) {
+    .status-hero {
+        padding: 56px 0 48px;
+    }
+
+    .status-hero h1 {
+        font-size: clamp(40px, 11vw, 52px);
+    }
+
+    .status-content {
+        padding: 34px 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .purchase-status *,
+    .purchase-status *::before,
+    .purchase-status *::after {
+        scroll-behavior: auto;
+        transition-duration: .01ms !important;
+    }
+}

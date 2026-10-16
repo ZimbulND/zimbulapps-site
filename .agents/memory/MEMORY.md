@@ -1,0 +1,1 @@
+- [Commercial scope](commercial-scope.md) — Windows offer is preserved; browser demo is prospective, and production releases require separate approval.

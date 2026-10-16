@@ -5,7 +5,7 @@ const path = require("node:path");
 
 const root = path.resolve(__dirname, "..");
 const publicRoots = new Set([
-  "index.html", "styles.css", "legal.css",
+  "index.html", "styles.css", "legal.css", "contact.js", "contact",
   "privacy", "refund-policy", "terms", "job-profit-workbook",
 ]);
 const mimeTypes = {
@@ -28,6 +28,10 @@ http.createServer(async (req, res) => {
   };
   if (req.method !== "GET" && req.method !== "HEAD") {
     res.setHeader("Allow", "GET, HEAD");
+    if (req.method === "POST" && ["/", "/contact/received/"].includes(req.url.split("?")[0])) {
+      res.writeHead(405, { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" });
+      return res.end('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Message not sent | Zimbul Apps</title><link rel="stylesheet" href="/styles.css"><main class="contact-result container"><h1>Message not sent</h1><p>This development preview does not process or deliver contact messages. Nothing was sent to Netlify or an inbox.</p><p>Use your browser’s Back button to return to your entries, or <a href="/#contact">return to contact</a>. You can email <a href="mailto:contact@zimbulapps.com">contact@zimbulapps.com</a> from your own email app.</p></main></html>');
+    }
     return respond(405, "This static preview cannot process form submissions.");
   }
   try {

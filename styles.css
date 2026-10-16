@@ -27,3 +27,13 @@ body:not(:has(.site-header)) header .logo{text-decoration:none}body:not(:has(.si
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:55px}.hero{padding-top:75px}.hero-visual{width:min(520px,90%);min-height:390px;margin:auto}.section-heading,.principles-grid,.company-grid,.contact-grid{grid-template-columns:1fr;gap:45px}.product-grid{grid-template-columns:1fr 1fr}.product-card-development{grid-column:1/-1;min-height:320px}.company-facts{grid-template-columns:1fr}.footer-grid{grid-template-columns:1.3fr 1fr 1fr}}
 @media(max-width:650px){.container{width:min(100% - 32px,1160px)}.header-inner,header>.container{min-height:76px;align-items:flex-start;flex-direction:column;padding:17px 0;gap:14px}.primary-nav,header nav{width:100%;gap:0;justify-content:space-between}.primary-nav a,header nav a{font-size:12px}.hero{min-height:auto;padding:68px 0}.hero h1{font-size:45px}.hero-lede{font-size:17px}.hero-actions{align-items:flex-start;flex-direction:column;gap:20px}.hero-visual{min-height:335px;width:100%}.signal-card{width:175px;padding:15px}.signal-card-one{right:-5px}.signal-card-two{left:-5px;top:145px}.signal-card-three{right:2px}.product-section,.principles-section,.company-section,.contact-section{padding:80px 0}.section-heading{gap:25px}.product-grid{grid-template-columns:1fr}.product-card,.product-card-development{grid-column:auto;min-height:375px}.company-facts{gap:0}.field-row{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div{grid-column:1/-1}.footer-bottom{align-items:flex-start;flex-direction:column;gap:5px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+
+/* Readiness improvements shared by the existing static pages. */
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #42645d;outline-offset:4px}
+.primary-nav a,header nav a{min-height:32px;display:inline-flex;align-items:center;padding:4px 2px}
+.form-guidance,.form-status{font-size:14px;line-height:1.65;color:#314b47;overflow-wrap:anywhere}
+.form-status:not(:empty){padding:14px;border:1px solid #789488;background:var(--mint)}
+.contact-form button:disabled{background:#526664;border-color:#526664;color:#fff;cursor:not-allowed;transform:none}
+.contact-result{max-width:760px;padding-block:70px;min-height:60vh;overflow-wrap:anywhere}
+.contact-result h1{font:500 clamp(32px,5vw,48px)/1.15 var(--serif);margin-bottom:24px}
+.contact-result p{margin-bottom:24px}
