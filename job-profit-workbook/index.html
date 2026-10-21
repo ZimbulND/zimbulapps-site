@@ -37,6 +37,7 @@
         <p class="jpw-offer-line"><strong>7-day free trial · No credit card · $199 one-time · No subscription</strong></p>
         <a class="btn" href="JobProfitWorkbookSetup.exe" download="JobProfitWorkbookSetup.exe">Start My Free 7-Day Trial</a>
         <span class="jpw-note">For Windows PCs. Downloads the installer. Start the 7-day trial in the workbook after it opens — no credit card.</span>
+        <p class="jpw-note">Edge showing an uncommon-download warning? <a href="#download-help" onclick="document.getElementById('download-help').open = true">Verify the publisher and download</a>.</p>
     </div>
 </section>
 
@@ -148,6 +149,16 @@
     <div class="container">
         <h2>Questions</h2>
         <div class="jpw-faq">
+            <details id="download-help">
+                <summary>Why does Edge say the installer isn't commonly downloaded?</summary>
+                <p>Microsoft Edge may show this message when a download has limited reputation, including for signed software. This warning alone does not establish whether a file is safe. Keep Microsoft Defender SmartScreen and your antivirus enabled.</p>
+                <p>Download only from this official page. Before opening the installer, right-click the downloaded file, choose Properties, then Digital Signatures. Select the signature and view Details. Confirm Windows reports that the digital signature is OK and the signer is <strong>Zimbul Apps LLC</strong>. If the signature is missing, invalid, or shows a different publisher, stop and <a href="/#contact">contact us</a>.</p>
+                <p>For an additional integrity check, open PowerShell and run the following command, adjusting the path if you saved the download elsewhere:</p>
+                <pre style="white-space:pre-wrap;overflow-wrap:anywhere"><code>Get-FileHash "$env:USERPROFILE\Downloads\JobProfitWorkbookSetup.exe" -Algorithm SHA256</code></pre>
+                <p>Expected SHA-256 for the current download:</p>
+                <p><code style="overflow-wrap:anywhere">CC3F26687FF78F04E45A6D7D604C47437AD68DD722B574752D112CD1506A1837</code></p>
+                <p>A matching checksum confirms the file matches this release; it is not a malware scan. If your browser or antivirus reports the file as malicious, stop and contact us. For an uncommon-download notice, proceed only after verifying the source and publisher and deciding you trust the download. Managed computers may require your IT team's approval.</p>
+            </details>
             <details>
                 <summary>Do I need a credit card to start?</summary>
                 <p>No. You can use Job Profit Workbook free for 7 days without entering a credit card.</p>
